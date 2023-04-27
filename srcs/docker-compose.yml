@@ -1,0 +1,48 @@
+version: '3'
+
+services:
+  db:
+    networks:
+      - wp
+    build:
+      context: ./db
+      dockerfile: Dockerfile
+    ports:
+      - "3306:3306"
+    env_file:
+      - .env
+    volumes:
+      - /home/mhaksal/data/db:/home/data
+    restart: always
+    tty: true
+  nginx:
+    networks:
+      - wp
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
+    environment:
+      - DOMAIN_NAME=$DOMAIN_NAME
+    ports:
+      - "80:80"
+      - "443:443"
+    restart: always
+    volumes:
+      - /home/mhaksal/data/nginx:/home/data
+    tty: true
+  wp:
+    networks:
+      - wp
+    build:
+      context: ./wp
+      dockerfile: Dockerfile
+    ports:
+      - "9000:9000"
+    volumes:
+      - /home/mhaksal/data/wp:/home/data
+    env_file:
+      - .env
+    restart: always
+    tty: true
+networks:
+  wp:
