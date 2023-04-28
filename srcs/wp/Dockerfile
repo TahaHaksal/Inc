@@ -1,9 +1,14 @@
 FROM debian:buster
 
 RUN apt-get update && \
-    apt-get install -y curl php-fpm php-mysql
+    apt-get install -y curl php-fpm php-mysql vim
 
 WORKDIR /var/www/html
+
+ARG MYSQL_USER
+ARG MYSQL_DB
+ARG MYSQL_PASSWORD
+ARG MYSQL_HOST
 
 RUN curl -O https://wordpress.org/wordpress-6.2.tar.gz && \
     tar -xzf wordpress-6.2.tar.gz && \
@@ -13,4 +18,10 @@ RUN curl -O https://wordpress.org/wordpress-6.2.tar.gz && \
 
 COPY ./conf/wp-config.php /var/www/html/wordpress/wp-config.php
 
-CMD 'bash'
+COPY ./tools/config.sh .
+
+COPY ./conf/php.conf /etc/php/7.3/fpm/pool.d/www.conf
+
+RUN sh ./config.sh && rm -f config.sh
+
+CMD ["/usr/sbin/php-fpm7.3", "-F", "-y", "/etc/php/7.3/fpm/pool.d/www.conf"]

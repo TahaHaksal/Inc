@@ -1,6 +1,12 @@
 #!/bin/bash
 
-mysql -u root -e "CREATE DATABASE IF NOT EXISTS ${MYSQL_DB};"
-mysql -u root -e "CREATE USER IF NOT EXISTS '${MYSQL_USER}' IDENTIFIED BY '${MYSQL_PASSWORD}';"
-mysql -u root -e "GRANT ALL PRIVILEGES ON ${MYSQL_DB}.* TO '${MYSQL_USER}';"
-mysql -u root -e "FLUSH PRIVILEGES;"
+service mysql start;
+
+sed -i 's/username_placeholder/'${MYSQL_USER}'/g' init.sql && \
+sed -i 's/password_placeholder/'${MYSQL_PASSWORD}'/g' init.sql && \
+sed -i 's/database_placeholder/'${MYSQL_DB}'/g' init.sql
+
+mysql < init.sql
+
+mysqladmin -u root shutdown;
+rm -f init.sql;
