@@ -1,40 +1,19 @@
 <?php
-<<<<<<< HEAD
 //HELLASFGDASFASDGASDF
 //gsdfGSDFFGFSDGFSD
 /** * The base configuration for WordPress * * The wp-config.php creation script uses this file during the installation. * You don't have to use the web site, you can copy this file to "wp-config.php" * and fill in the values. * * This file contains the following configurations:
-=======
-/**
- * The base configuration for WordPress
- *
- * The wp-config.php creation script uses this file during the installation.
- * You don't have to use the web site, you can copy this file to "wp-config.php"
- * and fill in the values.
- *
- * This file contains the following configurations:
->>>>>>> 2a8568048bed8f8ed809d1e5ecb3250b06a626f0
  *
  * * Database settings
  * * Secret keys
  * * Database table prefix
  * * ABSPATH
  *
-<<<<<<< HEAD
  * @link https://wordpress.org/support/article/editing-wp-config-php/
  *
  * @package WordPress
  */
 // HELLO THERE!!!
 //GDFGCHICKENS
-=======
- * @link https://wordpress.org/documentation/article/editing-wp-config-php/
- *
- * @package WordPress
- */
-
-// MAINTAINER MUSTAFA TAHA HAKSAL
-
->>>>>>> 2a8568048bed8f8ed809d1e5ecb3250b06a626f0
 // ** Database settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
 define( 'DB_NAME', 'database_name_here' );
@@ -94,11 +73,7 @@ $table_prefix = 'wp_';
  * For information on other constants that can be used for debugging,
  * visit the documentation.
  *
-<<<<<<< HEAD
  * @link https://wordpress.org/support/article/debugging-in-wordpress/
-=======
- * @link https://wordpress.org/documentation/article/debugging-in-wordpress/
->>>>>>> 2a8568048bed8f8ed809d1e5ecb3250b06a626f0
  */
 define( 'WP_DEBUG', false );
 

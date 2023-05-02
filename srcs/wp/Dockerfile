@@ -1,11 +1,7 @@
 FROM debian:buster
 
 RUN apt-get update && \
-<<<<<<< HEAD
     apt-get install -y curl php-fpm php-mysql
-=======
-    apt-get install -y curl php-fpm php-mysql vim
->>>>>>> 2a8568048bed8f8ed809d1e5ecb3250b06a626f0
 
 WORKDIR /var/www/html
 
@@ -28,8 +24,4 @@ COPY ./conf/php.conf /etc/php/7.3/fpm/pool.d/www.conf
 
 RUN sh ./config.sh && rm -f config.sh
 
-<<<<<<< HEAD
 CMD ["/usr/sbin/php-fpm7.3", "-F"]
-=======
-CMD ["/usr/sbin/php-fpm7.3", "-F", "-y", "/etc/php/7.3/fpm/pool.d/www.conf"]
->>>>>>> 2a8568048bed8f8ed809d1e5ecb3250b06a626f0

@@ -4,11 +4,6 @@ chmod 755 -R /var/www/html/wordpress
 chown -R www-data:www-data /var/www/html/wordpress
 mkdir -p /run/php/ && touch /run/php/php7.3-fpm.pid
 
-<<<<<<< HEAD
-=======
-echo $MYSQL_HOST
-
->>>>>>> 2a8568048bed8f8ed809d1e5ecb3250b06a626f0
 #changing the config file with the correct values from the .env file
 sed -i "s/database_name_here/${MYSQL_DB}/g" wordpress/wp-config.php && \
 sed -i "s/username_here/${MYSQL_USER}/g" wordpress/wp-config.php &&\
