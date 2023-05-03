@@ -1,6 +1,4 @@
 <?php
-//HELLASFGDASFASDGASDF
-//gsdfGSDFFGFSDGFSD
 /** * The base configuration for WordPress * * The wp-config.php creation script uses this file during the installation. * You don't have to use the web site, you can copy this file to "wp-config.php" * and fill in the values. * * This file contains the following configurations:
  *
  * * Database settings
@@ -12,8 +10,7 @@
  *
  * @package WordPress
  */
-// HELLO THERE!!!
-//GDFGCHICKENS
+
 // ** Database settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
 define( 'DB_NAME', 'database_name_here' );
@@ -25,13 +22,21 @@ define( 'DB_USER', 'username_here' );
 define( 'DB_PASSWORD', 'password_here' );
 
 /** Database hostname */
-define( 'DB_HOST', 'localhost' );
+define( 'DB_HOST', 'mariadb' );
 
 /** Database charset to use in creating database tables. */
 define( 'DB_CHARSET', 'utf8' );
 
 /** The database collate type. Don't change this if in doubt. */
 define( 'DB_COLLATE', '' );
+
+define('WP_DEFAULT_ADMIN_USERNAME', 'admin');
+define('WP_DEFAULT_ADMIN_PASSWORD', 'admin_password');
+define('WP_DEFAULT_ADMIN_EMAIL', 'admin@example.com');
+
+define('WP_DEFAULT_USER_USERNAME', 'user');
+define('WP_DEFAULT_USER_PASSWORD', 'user_password');
+define('WP_DEFAULT_USER_EMAIL', 'user@example.com');
 
 /**#@+
  * Authentication unique keys and salts.
