@@ -31,7 +31,6 @@ services:
         DB_USER: $MYSQL_USER
         DB_PASSWORD: $MYSQL_PASSWORD
         DB_ROOT_PASSWORD: $MYSQL_ROOT_PASSWORD
-
     ports:
       - "3306:3306"
     env_file:
@@ -42,7 +41,6 @@ services:
     tty: true
   nginx:
     container_name: nginx
-
     depends_on:
       - wordpress
     networks:
@@ -67,11 +65,8 @@ services:
     build:
       context: ./wp
       dockerfile: Dockerfile
-      args:
-        MYSQL_USER: $MYSQL_USER
-        MYSQL_PASSWORD: $MYSQL_PASSWORD
-        MYSQL_HOST: $MYSQL_HOST
-        MYSQL_DB: $MYSQL_DB
+    env_file:
+      - .env
     ports:
       - "9000:9000"
     volumes:

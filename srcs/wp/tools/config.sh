@@ -1,10 +1,15 @@
 #!/bin/sh
 
-chmod 755 -R /var/www/html/wordpress
-chown -R www-data:www-data /var/www/html/wordpress
-mkdir -p /run/php/ && touch /run/php/php7.3-fpm.pid
+mkdir -p /run/php && chown -R www-data:www-data /run/php
 
-#changing the config file with the correct values from the .env file
-sed -i "s/database_name_here/${MYSQL_DB}/g" wordpress/wp-config.php && \
-sed -i "s/username_here/${MYSQL_USER}/g" wordpress/wp-config.php &&\
-sed -i "s/password_here/${MYSQL_PASSWORD}/g" wordpress/wp-config.php
+wp core download --allow-root
+
+wp config create --allow-root --dbname=${MYSQL_DB} --dbuser=${MYSQL_USER} --dbpass=${MYSQL_PASSWORD} --dbhost=${MYSQL_HOST} --dbcharset=utf8 
+
+wp core install --url=localhost --title='Inception' --admin_user=${WP_ADMIN_USER} --admin_email=${WP_ADMIN_EMAIL} --admin_password=${WP_ADMIN_PASSWORD} --allow-root
+
+wp theme install twentyseventeen --activate --allow-root
+
+wp user create ${WP_USER} ${WP_EMAIL} --role=contributor --first_name=${WP_USER} --last_name=${WP_USER} --user_pass=${WP_PASSWORD} --allow-root
+
+wp db optimize --allow-root
