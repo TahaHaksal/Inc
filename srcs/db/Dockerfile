@@ -14,6 +14,6 @@ RUN apt-get install -y mariadb-server
 COPY ./conf/50-server.cnf /etc/mysql/mariadb.conf.d/
 COPY ./tools/ .
 
-RUN sh db.sh && rm -f db.sh
+RUN sh db.sh
 
 CMD ["mysqld"]

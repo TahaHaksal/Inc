@@ -1,15 +1,16 @@
 DATA_DIR = /home/mhaksal/data
 
 all: dir
-	cd srcs && docker-compose up -d --build
+	docker-compose -f srcs/docker-compose.yml --env-file=srcs/.env up -d --build
 re: fclean dir
-	cd srcs && docker-compose up -d --build
+	docker-compose -f srcs/docker-compose.yml --env-file=srcs/.env up -d --build
 clean:
-	cd srcs && docker-compose down --remove-orphans -v
-fclean:
+	docker-compose -f srcs/docker-compose.yml --env-file=srcs/.env down --remove-orphans -v
+fclean: clean
 	cd ${HOME}/data && sudo rm -rf *
-	cd srcs && docker system prune -af
-	cd srcs && docker container prune -f
-	cd srcs && docker image prune -af
+	docker system prune -af
+	docker container prune -f
+	docker image prune -af
 dir:
-	sudo mkdir -p ${HOME}/mhaksal/data
+	sudo mkdir -p ${DATA_DIR}/wp
+	sudo mkdir -p ${DATA_DIR}/db

@@ -25,4 +25,4 @@ COPY conf/nginx.conf /etc/nginx/sites-available/nginx.conf
 RUN ln -s /etc/nginx/sites-available/nginx.conf /etc/nginx/sites-enabled/nginx.conf
 
 #the command run when this container starts
-CMD ["nginx", "-g", "daemon off"]
+CMD ["nginx", "-g", "daemon off;"]
